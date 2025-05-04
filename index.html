@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Repositório organizado de links úteis para aprendizado e desenvolvimento">
+  <title>claramente</title>
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="script.js" as="script">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hidden {
+      display: none !important;
+    }
+    
+    #loading-indicator,
+    .notification {
+      position: fixed;
+      z-index: 1000;
+    }
+
+    /* Skeleton loading */
+    .skeleton-item {
+      height: 44px;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .dark-theme .skeleton-item {
+      background: linear-gradient(90deg, #3c4a5e 25%, #4a5568 50%, #3c4a5e 75%);
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="site-title">claramente</h1>
+    <button id="theme-toggle" title="Alternar tema" aria-label="Alternar tema claro/escuro">🌙</button>
+  </header>
+
+  <section class="site-description">
+    <p>Bem-vindo ao claramente, seu repositório organizado de links úteis. Aqui você encontra:</p>
+    <ul>
+      <li><a href="#cursos" class="scroll-link">🎓 Cursos para aprimorar seus conhecimentos</a></li>
+      <li><a href="#vídeos" class="scroll-link">🎬 Vídeos educativos e inspiradores</a></li>
+      <li><a href="#páginas" class="scroll-link">🌐 Páginas essenciais para seu desenvolvimento</a></li>
+      <li><a href="#melhorar-habilidades" class="scroll-link">🚀 Recursos para melhorar suas habilidades</a></li>
+    </ul>
+    <p>Tudo categorizado e fácil de encontrar!</p>
+  </section>
+
+  <main>
+    <input type="text" id="search-input" placeholder="🔎 Buscar link..." aria-label="Buscar links">
+
+    <div id="category-filter">
+      <button data-category="all" aria-label="Mostrar todas as categorias">Todas</button>
+      <button data-category="cursos" aria-label="Filtrar por cursos">Cursos</button>
+      <button data-category="vídeos" aria-label="Filtrar por vídeos">Vídeos</button>
+      <button data-category="páginas" aria-label="Filtrar por páginas">Páginas</button>
+      <button data-category="melhorar-habilidades" aria-label="Filtrar por recursos para melhorar habilidades">Melhorar habilidades</button>
+      <button data-category="favoritos" aria-label="Mostrar favoritos">⭐ Favoritos</button>
+    </div>
+
+    <div id="link-list">
+      <div id="cursos" class="category-block">
+        <h3>cursos</h3>
+        <ul class="skeleton-list">
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+        </ul>
+      </div>
+      <div id="vídeos" class="category-block">
+        <h3>vídeos</h3>
+        <ul class="skeleton-list">
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+        </ul>
+      </div>
+      <div id="páginas" class="category-block">
+        <h3>Páginas</h3>
+        <ul class="skeleton-list">
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+        </ul>
+      </div>
+      <div id="melhorar-habilidades" class="category-block">
+        <h3>Melhorar habilidades</h3>
+        <ul class="skeleton-list">
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+          <li class="skeleton-item"></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Formulário de contato -->
+  <div class="contact-form-container">
+    <form id="meuFormulario">
+      <h2>Contato</h2>
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required aria-required="true">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required aria-required="true">
+      </div>
+      
+      <div class="form-group">
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" required aria-required="true"></textarea>
+      </div>
+      
+      <button type="submit">Enviar</button>
+      <p id="statusEnvio"></p>
+    </form>
+  </div>
+
+  <!-- Formulário de Sugestões (MOVIDO PARA AQUI) -->
+  <section id="suggestions" class="suggestion-form">
+    <h3>🔗 Sugerir um novo link</h3>
+    <form id="suggestion-form">
+      <div class="form-group">
+        <label for="suggest-title">Título do link:</label>
+        <input type="text" id="suggest-title" required placeholder="Ex: Curso gratuito de JavaScript">
+      </div>
+      <div class="form-group">
+        <label for="suggest-url">URL:</label>
+        <input type="url" id="suggest-url" required placeholder="Ex: https://exemplo.com">
+      </div>
+      <div class="form-group">
+        <label for="suggest-category">Categoria:</label>
+        <select id="suggest-category" required>
+          <option value="">Selecione...</option>
+          <option value="cursos">Cursos</option>
+          <option value="vídeos">Vídeos</option>
+          <option value="páginas">Páginas</option>
+          <option value="melhorar-habilidades">Melhorar habilidades</option>
+        </select>
+      </div>
+      <button type="submit" id="submit-suggestion">Enviar sugestão</button>
+      <p id="suggestion-status"></p>
+    </form>
+  </section>
+
+  <!-- Elementos dinâmicos -->
+  <div id="loading-indicator" class="hidden">
+    <div class="spinner"></div>
+    <p>Carregando...</p>
+  </div>
+
+  <footer class="legal-notice">
+    <p>Este site funciona como índice de conteúdo educativo. Não somos responsáveis por materiais externos, não realizamos cobranças e não nos responsabilizamos por práticas de terceiros.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
